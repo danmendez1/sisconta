@@ -1,0 +1,69 @@
+<!DOCTYPE html>{% load staticfiles %}
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial.scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/jquery.dataTables.min.css'%}">
+    <script src="{% static 'bootstrap/js/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'bootstrap/js/jquery-1.12.3.js'%}"></script>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/estilos.css'%}">
+    {%block css %}
+    {%endblock%}
+</head>
+
+ <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top" >
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    {%block opcionesmenu %}
+                   <!-- <li role="presentation" class="active"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="#">Opcion 1</a></li>
+                    <li role="presentation"><a href="#">Opcion 2</a></li>
+                    <li role="presentation"><a href="#">Opcion 3</a></li>
+                    <li role="presentation"><a href="#">Opcion 4</a></li>
+                    <li role="presentation"><a href="#">Opcion 5</a></li>-->
+                    {%endblock %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+<body style="padding-top:50px;">
+    <div id="wrapper">
+        <!--SIDEBAR-->
+        <div id="sidebar-wrapper"  position:fixed !important; right:0px; top:0px; z-index:10 !important>
+            <ul class="sidebar-nav">
+                {%block barraLateral%}
+                
+               <!-- <li class="sidebar-brand"><a href="#">Opciones:</a></li>
+                <li><a href="#">Opcion 1</a></li>
+                <li><a href="#">Opcion 2</a></li>
+                <li><a href="#">Opcion 3</a></li>
+                <li><a href="#">Opcion 4</a></li>
+                <li><a href="#">Opcion 5</a></li>
+                <li><a href="#">Opcion 6</a> </li>
+                <li><a href="#">Opcion 7</a></li>-->
+                    {%endblock%}
+            </ul>
+        </div>
+
+        {%block areaTrabajo%}
+        {%endblock%}
+    
+    </div>
+
+    <script src="{% static 'bootstrap/js/jquery.js'%}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+    <!-- // <script src="{% static 'bootstrap/js/jquery.dataTables.min.js'%}"></script> -->
+    <!-- // <script src="{% static 'bootstrap/js/jquery-1.12.3.js'%}"></script> -->
+
+    {% block js%}
+    {%endblock%}
+</body>
+
+</html>

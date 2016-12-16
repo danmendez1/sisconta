@@ -1,0 +1,49 @@
+{% extends "html5up-hyperspace/index.html" %} {%block title %}Catalogo de Cuentas{% endblock %} {% block script %}
+<link rel="stylesheet" href="/static/css/tablaCatlogo.css" />
+<script type="text/javascript" src="/static/js/catalogo.js"></script> {% endblock %}
+ {% block header %}
+<li><a href="../diario">Libro Diario</a></li>
+<li><a href="../index">Salir</a></li>
+{% endblock header %}
+<li>
+
+    {%block wrapper%}
+    
+    <table>
+        <caption>Catalogo de Cuentas</caption>
+        <tr>
+            <th>Codigo</th>
+            <th>Cuentas</th>
+            <th>Opciones</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Activo</td>
+
+            <td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Activos Corrientes</td>
+
+            <td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+        </tr>
+        <tr>
+            <td>1101</td>
+            <td>Caja General</td>
+            <td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+        </tr>
+        <tr>
+            <td>1102</td>
+            <td>Caja Chica</td>
+            <td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+        </tr>
+    </table>
+    <div id="contenedorForm">
+    </div>
+
+    {%endblock wrapper%} {%block sidebar %}
+    <a href="../diario">Buscar</a>
+    <a href="diario.html">Editar</a>
+    <a>Eliminar</a>
+    <a href="imprimir.html">Imprimir</a> {% endblock %}

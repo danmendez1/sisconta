@@ -1,0 +1,60 @@
+ {% extends "html5up-hyperspace/index.html" %} 
+ 
+
+{% block script %}
+<link rel="stylesheet" href="/static/css/tablaLibro.css" />
+<script type="text/javascript" src="/static/js/diario.js"></script> {% endblock %}
+{% block header %}
+<li><a href="../catalogo">Catalogo de Cuentas</a></li>
+<li><a href="../index">Salir</a></li>
+{% endblock header %}
+<li>
+
+	{% block sidebar %} {%endblock sidebar%} 
+    
+    {%block wrapper%}
+	
+    <table>
+		<caption>Libro Diario</caption>
+		<tr>
+			<th>Codigo</th>
+			<th>Cuentas</th>
+			<th>Debe</th>
+            <th>Haber</th>
+            <th>Opciones</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Activo</td>
+            <td>500</td>
+            <td>250</td>
+			<td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Activo</td>
+            <td></td>
+            <td></td>
+			<td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Activo</td>
+            <td></td>
+            <td></td>
+			<td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Activo</td>
+            <td></td>
+            <td></td>
+			<td><span class="editar" onclick="transformarEnEditable(this)">Editar</span></td>
+		</tr>
+	</table>
+	<div id="contenedorForm">
+	</div>
+
+
+
+	{%endblock wrapper%}

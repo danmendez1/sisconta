@@ -1,0 +1,156 @@
+{%extends "Base.html"%}
+{% load staticfiles%}
+{%block css %}
+<link rel="stylesheet" href="{% static 'dist/css/bootstrap-select.css'%}">
+{%endblock%}
+
+{%block opcionesmenu %}
+                    <li role="presentation" ><a href="{% url 'login' %}  ">Home</a></li>
+                    <li role="presentation" class="active"><a href="#">Registro</a></li>
+                   
+                    <li role="presentation"><a href="#">Cerrar Sesion</a></li>
+                    {%endblock %}
+
+ {%block barraLateral%} 
+                <!--<li class="sidebar-brand"><a href="#">Opciones: Registro</a></li>
+                <li><a href="{% url 'consultaPartida' %}">consultar partidas</a></li>
+                <li><a href="">Opcion consultar</a></li>
+                <li><a href="{% url 'Registro' %}">Opcion 3</a></li>
+                <li><a href="#">Opcion 4</a></li>
+                <li><a href="#">Opcion 5</a></li>
+                <li><a href="#">Opcion 6</a> </li>
+                <li><a href="#">Opcion 7</a></li>-->
+
+
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                    <span class="glyphicon glyphicon-home"></span>  {{empresa}}
+                    </a> 
+
+                   <div class="list-group">
+                    <a href="{% url 'consultaPartida' %}" class="list-group-item">
+                    <span class="glyphicon glyphicon-eye-open"></span>  Consultar Partidas
+                    </a>  
+{%endblock%}
+
+
+{%block areaTrabajo%}
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                       
+
+
+    
+     <!--<div class="menu">
+        <li class="menu-item current"><a href="/conta/home/">HOME
+        </a></li>
+        <li class="menu-item"><a href="/conta/Importacion/">Importar catalogo</a></li>
+        <li class="menu-item"><a href="#" id="consulta">Consultar catalogo catalogo</a></li>
+    
+     </div>-->
+    <div class="hijo">
+     <form method="post" action="{% url 'regPartida' %}" id="fo3" name="fo3" >{% csrf_token %}
+        <INPUT type="number" min="1"  value=""  id="numeroP" name="numeroP">
+        <input type="date" value="" id="fechaP" required name="fechaP">
+        <div class="table-responsive">
+        <TABLE id="dataTable" class="table table-hover" border="">
+          <label>concepto</label>
+        <input type="text"   name="concepto" required  value="" />
+        </TABLE>
+        </div>
+        
+        <!-- <input type="submit"   name="mysubmit" value="Enviar" /> -->
+        
+        </form>
+        <select id="insertcodigo" class="selectpicker" data-live-search="true" required name="insertcodigo" onChange="valida()">
+        <!-- <select id="insertcodigo" class="insertcodigo" data-live-search="true" required name="insertcodigo" onChange="valida()"> -->
+            {% for t in empresa.getTipos %} 
+            <option disabled >
+               {{t.codTipo}}    {{t.nomTipo}}  
+             </option>
+              {% for r in t.getRubros %}
+              <option disabled>
+                {{r.getCodRubro}}    {{r.nomRubro}} 
+              </option>
+                  {% for c in r.cuentasPorRubro %}
+                    {% if c.haveSons %}
+                      <option disabled >
+                      {{c.getCodCuenta}}    {{c.nomCuenta}}
+                      </option>
+                    {% else %}
+                      <option value="{{c.idCuenta}}">
+                      {{c.getCodCuenta}}    {{c.nomCuenta}}
+                      </option>  
+                    {% endif %}                 
+                  {% endfor %}
+                {% endfor %}      
+              {% endfor %}
+            
+                
+        </select>
+        
+        <INPUT  type="number" min="0" required value="" id="insertdebe" NAME="" form="fo">
+        <INPUT  type="number" min="0" required value="" id="inserthaber" NAME="" form="fo">
+        <INPUT type="button" value="Agregar" onclick="addRow('dataTable');" />
+        <INPUT type="button" value="Borrar" onclick="deleteRow('dataTable');" />
+     </div> 
+        <input type="submit"   name="mysubmit" value="Enviar"  form="fo3" />
+        {% if msg %} 
+        <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        
+        <span class="sr-only">mensaje:</span>
+         {{msg}}
+        </div>
+        {% endif %} 
+
+       <div>
+       </div>
+       <div>
+       </div>
+
+
+ 
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- <select id="insertcodigo" class="insertcodigo" data-live-search="true" name="insertcodigo" onChange="valida()">
+            {% for t in empresa.getTipos %} 
+            <option disabled >
+               {{t.codTipo}}    {{t.nomTipo}}  
+             </option>
+              {% for r in t.getRubros %}
+              <option disabled>
+                {{r.getCodRubro}}    {{r.nomRubro}} 
+              </option>
+                  {% for c in r.getCuentasMenor %}
+                    {% if c.haveSons %}
+                      <option disabled >
+                      {{c.getCodCuenta}}    {{c.nomCuenta}}
+                      </option>
+                    {% else %}
+                      <option value="{{c.idCuenta}}">
+                      {{c.getCodCuenta}}    {{c.nomCuenta}}
+                      </option>  
+                    {% endif %}                 
+                  {% endfor %}
+                {% endfor %}      
+              {% endfor %}
+            
+                
+        </select> -->
+{%endblock%}
+{% block js%}
+
+<script src="{% static 'bootstrap/js/miscrip.js'%}"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!-- libreria de select con bootstrap -->
+<script src="{% static 'dist/js/bootstrap-select.js'%}"></script>
+
+     
+     
+
+{%endblock%}
